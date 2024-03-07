@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" type="text/css" href="./index.css" />
+
+    <!-- <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; script-src 'self'"
+    />
+    
+    <meta
+      http-equiv="X-Content-Security-Policy"
+      content="default-src 'self'; script-src 'self'"
+    /> -->
+    <!-- <title>Hello from Electron renderer!</title> -->
+  </head>
+  <body>
+    <!-- <h1>Hello from Electron renderer!</h1> -->
+    <p>👋</p>
+    <button id="click-btn">Click</button>
+    <div id="myweb">
+      <button id="testing-btn">Testing</button>
+    </div>
+  </body>
+  <script src="./renderer.js"></script>
+  <script>
+    function changeWebviewDim() {
+      let width = window.innerWidth * 0.6945;
+      let height = width / 1.7646;
+      const webview = document.getElementById("myweb");
+      console.log(webview);
+      webview.style.width = width + "px";
+      webview.style.height = height + "px";
+
+      const btn = document.getElementById("testing-btn");
+      btn.style.position = "fixed";
+      btn.style.left = width * 0.823 + "px";
+      btn.style.top = height * 0.479 + "px";
+    }
+    setTimeout(() => {
+      changeWebviewDim();
+    }, 1000);
+    window.addEventListener("resize", (event) => {
+      changeWebviewDim();
+    });
+  </script>
+</html>
